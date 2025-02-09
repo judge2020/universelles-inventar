@@ -3,9 +3,14 @@ import {uor_3_park_3_day_one_day_epic_base_ad} from "./data";
 
 export class Extractor {
 	extractInventoryEvents(my_json: uorApiResponseShopPriceAndInventoryV2, tickets: AnalyticsEngineDataset) {
+		console.log("0");
 		for (const product in my_json.eventAvailability) {
+			let datesLogged = 0;
+			console.log("1");
 			for (const date in my_json.eventAvailability[product]) {
+				datesLogged++;
 				if (!date.includes("2025")) {
+					console.log("what")
 					continue;
 				}
 				// @ts-ignore
@@ -29,6 +34,7 @@ export class Extractor {
 					'indexes': ["tickets"]
 				});
 			}
+			console.log("emitted date count", datesLogged);
 		}
 
 	}

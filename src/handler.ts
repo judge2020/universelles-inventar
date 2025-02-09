@@ -52,10 +52,9 @@ export class Handler {
 	}
 
 	getDates(input_time: number): [string, string] {
-		input_time = 12;
 		const startDate = new Date("2025-05-20 00:00:01");
 		const endDate = new Date("2025-12-31 23:59:59");
-		const segmentDays = 25; // Fixed 25-day period
+		const segmentDays = 24; // Fixed 25-day period
 
 		// Calculate the starting day of the given segment
 		let segmentStartDate = new Date(startDate);

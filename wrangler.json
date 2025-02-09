@@ -12,7 +12,7 @@
 	},
 	"triggers": {
 		"crons": [
-			"* * * * *"
+			"*/15 * * * *"
 		]
 	},
 	/**
@@ -41,7 +41,24 @@
 			"binding": "tickets",
 			"dataset": "tickets"
 		}
-	]
+	],
+	"queues": {
+		"producers": [
+			{
+				"queue": "uor-queue",
+				"binding": "uor_queue"
+			}
+		],
+		"consumers": [
+			{
+				"queue": "uor-queue",
+				"max_batch_size": 1,
+				"max_batch_timeout": 4,
+				"max_retries": 0,
+				"max_concurrency": 1
+			}
+		]
+	}
 
 	/**
      * Environment Variables

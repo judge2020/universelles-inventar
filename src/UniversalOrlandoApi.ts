@@ -27,11 +27,11 @@ export default class UniversalOrlandoApi {
 		};
 	}
 
-	async ensureToken(cache: Cache): Promise<boolean> {
+	async ensureToken(cache: Cache, forceObtain: boolean = false): Promise<boolean> {
 		let CACHE_KEY = "uor:api:access_token";
 		try {
 			let potential = await cache.get(CACHE_KEY);
-			if (potential) {
+			if (potential && !forceObtain) {
 				this._access_token = potential;
 				return true;
 			}

@@ -3,10 +3,9 @@ import {uor_3_park_3_day_one_day_epic_base_ad} from "./data";
 
 export class Extractor {
 	extractInventoryEvents(my_json: uorApiResponseShopPriceAndInventoryV2, tickets: AnalyticsEngineDataset) {
-		console.log("0");
 		for (const product in my_json.eventAvailability) {
 			let datesLogged = 0;
-			console.log("1");
+			console.log("Extracting from product...");
 			for (const date in my_json.eventAvailability[product]) {
 				datesLogged++;
 				if (!date.includes("2025")) {

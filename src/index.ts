@@ -10,28 +10,40 @@
  *
  * Learn more at https://developers.cloudflare.com/workers/
  */
-import Cache from "./Cache";
-import UniversalOrlandoApi from "./UniversalOrlandoApi";
-import {uor_3_park_3_day_one_day_epic_base_ad} from "./data";
-import {uorApiRequestDataInventoryEvent, uorApiResponseShopPriceAndInventoryV2} from "./types";
-import {Extractor} from "./extractor";
+
 import {Handler} from "./handler";
+import {ExecutionContext, MessageBatch} from "@cloudflare/workers-types/2023-07-01/index";
+import {Env} from "../worker-configuration";
 
 let handler = new Handler();
 
 export default {
 	async fetch(request: Request, env: Env, ctx: any): Promise<Response> {
-		if (new URL(request.url).pathname !== "/yay") {
-			return new Response("hello");
+		let url = new URL(request.url);
+		if (url.pathname == "/yay") {
+			await handler.handleKickoffUniversalEpicBatch(env);
+			return new Response("yay");
+		} else if (url.pathname == "/one") {
+			await env.uor_queue.send(handler.getDatesArray()[0]);
+			return new Response("did one");
 		}
-		await handler.handleUniversalEpic(env);
-		return new Response("yay");
+		return new Response("hello");
 	},
 	async scheduled(
 		controller: ScheduledController,
 		env: Env,
 		ctx: ExecutionContext,
 	) {
-		await handler.handleUniversalEpic(env);
+		await handler.handleKickoffUniversalEpicBatch(env);
 	},
+	async queue(
+		batch: MessageBatch,
+		env: Env,
+		ctx: ExecutionContext
+	) {
+		for (let {body} of batch.messages) {
+			// @ts-ignore
+			await handler.handleUniversalEpic(env, body);
+		}
+	}
 } satisfies ExportedHandler<Env>;

@@ -31,10 +31,11 @@ export class Extractor {
 					totallySoldOut = 1;
 				}
 				//console.log(`Extractor totalCapacity: ${totalCapacity}`);
+				let sampling_index = `${product}:${date}:v1`;
 				tickets.writeDataPoint({
 					'blobs': [product, date],
 					'doubles': [totalCapacity, quantityAvailable, availableUnits, totallySoldOut],
-					'indexes': [product]
+					'indexes': [sampling_index]
 				});
 			}
 			console.log("emitted date count", datesLogged);

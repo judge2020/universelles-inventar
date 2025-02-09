@@ -14,17 +14,18 @@
 import {Handler} from "./handler";
 import {ExecutionContext, MessageBatch} from "@cloudflare/workers-types/2023-07-01/index";
 import {Env} from "../worker-configuration";
+import {uor_3_park_3_day_one_day_epic_base_ad, uor_uoap_epic_addon_ad} from "./data";
 
-let handler = new Handler();
+let handler = new Handler;
 
 export default {
 	async fetch(request: Request, env: Env, ctx: any): Promise<Response> {
 		let url = new URL(request.url);
 		if (url.pathname == "/yay") {
-			await handler.handleKickoffUniversalEpicBatch(env);
+			await handler.handleKickoffUniversalEpicBatch(env, uor_uoap_epic_addon_ad);
 			return new Response("yay");
 		} else if (url.pathname == "/one") {
-			await env.uor_queue.send(handler.getDatesArray()[0]);
+			await env.uor_queue.send(handler.getDatesArray(uor_uoap_epic_addon_ad)[0]);
 			return new Response("did one");
 		}
 		return new Response("hello");
@@ -34,7 +35,8 @@ export default {
 		env: Env,
 		ctx: ExecutionContext,
 	) {
-		await handler.handleKickoffUniversalEpicBatch(env);
+		await handler.handleKickoffUniversalEpicBatch(env, uor_3_park_3_day_one_day_epic_base_ad);
+		await handler.handleKickoffUniversalEpicBatch(env, uor_uoap_epic_addon_ad);
 	},
 	async queue(
 		batch: MessageBatch,

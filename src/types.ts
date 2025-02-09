@@ -1,6 +1,7 @@
 export type uorDateBoundary = {
 	start_date: string;
 	end_date: string;
+	partNumber: string;
 }
 
 export type uorApiResponseOidcConnectToken = {

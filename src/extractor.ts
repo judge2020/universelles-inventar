@@ -18,6 +18,7 @@ export class Extractor {
 				let totalCapacity = 0;
 				let availableUnits = 0;
 				let quantityAvailable = 0;
+				let totallySoldOut = 0;
 
 				if (eventData.inventoryEvents && eventData.inventoryEvents.length > 0) {
 					const event: uorApiRequestDataInventoryEvent = eventData.inventoryEvents[0]; // Assuming one event per date
@@ -26,11 +27,14 @@ export class Extractor {
 					availableUnits = parseInt(event.availableUnits, 10);
 					quantityAvailable = totalCapacity - availableUnits;
 				}
+				if (eventData.inventoryEvents.length == 0){
+					totallySoldOut = 1;
+				}
 				//console.log(`Extractor totalCapacity: ${totalCapacity}`);
 				tickets.writeDataPoint({
 					'blobs': [product, date],
-					'doubles': [totalCapacity, quantityAvailable, availableUnits],
-					'indexes': ["tickets"]
+					'doubles': [totalCapacity, quantityAvailable, availableUnits, totallySoldOut],
+					'indexes': [product]
 				});
 			}
 			console.log("emitted date count", datesLogged);

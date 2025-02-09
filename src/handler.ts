@@ -16,7 +16,7 @@ export class Handler {
 	async handleUniversalEpic(env: Env, dates: uorDateBoundary) {
 		console.log("dates", dates)
 		let cache = new Cache(env.cache);
-		let uor = new UniversalOrlandoApi();
+		let uor = new UniversalOrlandoApi;
 		await uor.ensureToken(cache);
 
 		let res = await uor.getV2({
@@ -24,7 +24,7 @@ export class Handler {
 			currency: "USD",
 			events: [
 				{
-					partNumber: uor_3_park_3_day_one_day_epic_base_ad,
+					partNumber: dates.partNumber,
 					startDate: dates.start_date,
 					endDate: dates.end_date,
 					quantity: "1"
@@ -46,17 +46,17 @@ export class Handler {
 		extractor.extractInventoryEvents(myjson, env.tickets);
 	}
 
-	async handleKickoffUniversalEpicBatch(env: Env) {
+	async handleKickoffUniversalEpicBatch(env: Env, partNumber: string) {
 		// Ensure access token first, so sent messages don't hit it
 		let uor = new UniversalOrlandoApi;
 		await uor.ensureToken(new Cache(env.cache));
 
-		for (let date of this.getDatesArray()) {
+		for (let date of this.getDatesArray(partNumber)) {
 			await env.uor_queue.send(date)
 		}
 	}
 
-	getDatesArray(): uorDateBoundary[] {
+	getDatesArray(partNumber: string): uorDateBoundary[] {
 		const startDate = new Date("2025-05-20 00:00:01");
 		const endDate = new Date("2025-12-31 23:59:59");
 		const segmentDays = 24; // Fixed 24-day period
@@ -75,7 +75,8 @@ export class Handler {
 
 			segments.push({
 				start_date: formatDate(currentStartDate, "00:00:01"),
-				end_date: formatDate(currentEndDate, "23:59:59")
+				end_date: formatDate(currentEndDate, "23:59:59"),
+				partNumber: partNumber,
 			});
 
 			// Move to the next segment

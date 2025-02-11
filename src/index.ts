@@ -22,12 +22,14 @@ export default {
 	async fetch(request: Request, env: Env, ctx: any): Promise<Response> {
 		let url = new URL(request.url);
 		if (url.pathname == "/yay") {
-			await handler.handleKickoffUniversalEpicBatch(env, uor_uoap_epic_addon_ad);
+			await handler.handleUniversalEpic(env, {
+				start_date: "2025-05-20 00:00:01",
+				end_date: "2025-12-31 23:59:59",
+				partNumber: uor_uoap_epic_addon_ad,
+			});
 			return new Response("yay");
-		} else if (url.pathname == "/one") {
-			await env.uor_queue.send(handler.getDatesArray(uor_uoap_epic_addon_ad)[0]);
-			return new Response("did one");
 		}
+
 		return new Response("hello");
 	},
 	async scheduled(
@@ -35,8 +37,16 @@ export default {
 		env: Env,
 		ctx: ExecutionContext,
 	) {
-		await handler.handleKickoffUniversalEpicBatch(env, uor_3_park_3_day_one_day_epic_base_ad);
-		await handler.handleKickoffUniversalEpicBatch(env, uor_uoap_epic_addon_ad);
+		await handler.handleUniversalEpic(env, {
+			start_date: "2025-05-20 00:00:01",
+			end_date: "2025-12-31 23:59:59",
+			partNumber: uor_3_park_3_day_one_day_epic_base_ad,
+		});
+		await handler.handleUniversalEpic(env, {
+			start_date: "2025-05-20 00:00:01",
+			end_date: "2025-12-31 23:59:59",
+			partNumber: uor_uoap_epic_addon_ad,
+		});
 	},
 	async queue(
 		batch: MessageBatch,
@@ -45,7 +55,7 @@ export default {
 	) {
 		for (let {body} of batch.messages) {
 			// @ts-ignore
-			await handler.handleUniversalEpic(env, body);
+			env.tickets.writeDataPoint(body);
 		}
 	}
 } satisfies ExportedHandler<Env>;

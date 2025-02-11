@@ -5,5 +5,6 @@ import {uorDateBoundary} from "./src/types";
 interface Env {
 	cache: KVNamespace,
 	tickets: AnalyticsEngineDataset,
-	uor_queue: Queue<uorDateBoundary>;
+	errors: AnalyticsEngineDataset,
+	uor_queue: Queue<AnalyticsEngineDataPoint>;
 }

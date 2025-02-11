@@ -40,6 +40,10 @@
 		{
 			"binding": "tickets",
 			"dataset": "tickets"
+		},
+		{
+			"binding": "errors",
+			"dataset": "errors"
 		}
 	],
 	"queues": {
@@ -52,10 +56,10 @@
 		"consumers": [
 			{
 				"queue": "uor-queue",
-				"max_batch_size": 1,
+				"max_batch_size": 20,
 				"max_batch_timeout": 4,
 				"max_retries": 0,
-				"max_concurrency": 1
+				"max_concurrency": 2
 			}
 		]
 	}

@@ -1,15 +1,19 @@
 import {uorApiRequestDataInventoryEvent, uorApiResponseShopPriceAndInventoryV2} from "./types";
-import {uor_3_park_3_day_one_day_epic_base_ad} from "./data";
+import {emitErrorDp} from "./helpers";
+import {Env} from "../worker-configuration";
 
 export class Extractor {
-	extractInventoryEvents(my_json: uorApiResponseShopPriceAndInventoryV2, tickets: AnalyticsEngineDataset) {
+	extractInventoryEvents(my_json: uorApiResponseShopPriceAndInventoryV2, env: Env): AnalyticsEngineDataPoint[] {
+		let out_datapoints: AnalyticsEngineDataPoint[] = [];
 		for (const product in my_json.eventAvailability) {
 			let datesLogged = 0;
 			console.log("Extracting from product...");
 			for (const date in my_json.eventAvailability[product]) {
 				datesLogged++;
-				if (!date.includes("2025")) {
-					console.log("what")
+				if (!date.includes("2025") || date.includes("2025-04")) {
+					// @ts-ignore
+					emitErrorDp(env, "extract:baddate", 999, JSON.stringify(my_json.eventAvailability[product][date]));
+					console.log("what");
 					continue;
 				}
 				// @ts-ignore
@@ -32,7 +36,7 @@ export class Extractor {
 				}
 				//console.log(`Extractor totalCapacity: ${totalCapacity}`);
 				let sampling_index = `${product}:${date}:v1`;
-				tickets.writeDataPoint({
+				out_datapoints.push({
 					'blobs': [product, date],
 					'doubles': [totalCapacity, quantityAvailable, availableUnits, totallySoldOut],
 					'indexes': [sampling_index]
@@ -40,6 +44,6 @@ export class Extractor {
 			}
 			console.log("emitted date count", datesLogged);
 		}
-
+		return out_datapoints;
 	}
 }

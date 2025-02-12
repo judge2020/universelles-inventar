@@ -16,13 +16,13 @@ export class Extractor {
 					console.log("what");
 					continue;
 				}
-				// @ts-ignore
 				let eventData = my_json.eventAvailability[product][date];
 
 				let totalCapacity = 0;
 				let availableUnits = 0;
 				let quantityAvailable = 0;
 				let totallySoldOut = 0;
+				let price_usd = 0;
 
 				if (eventData.inventoryEvents && eventData.inventoryEvents.length > 0) {
 					const event: uorApiRequestDataInventoryEvent = eventData.inventoryEvents[0]; // Assuming one event per date
@@ -30,15 +30,23 @@ export class Extractor {
 					totalCapacity = parseInt(event.totalCapacity, 10);
 					availableUnits = parseInt(event.availableUnits, 10);
 					quantityAvailable = totalCapacity - availableUnits;
+
 				}
-				if (eventData.inventoryEvents.length == 0){
+
+				// Get Pricing
+				if (eventData.pricing && eventData.pricing.length > 0) {
+					price_usd = eventData.pricing[0].amount;
+				}
+
+				// check if totally sold out... it seems we sometimes get empty arrays, so this is redundant, but we can't swap the data fields we're pumping in after they're in the db.
+				if (eventData.inventoryEvents.length == 0) {
 					totallySoldOut = 1;
 				}
-				//console.log(`Extractor totalCapacity: ${totalCapacity}`);
+
 				let sampling_index = `${product}:${date}:v1`;
 				out_datapoints.push({
 					'blobs': [product, date],
-					'doubles': [totalCapacity, quantityAvailable, availableUnits, totallySoldOut],
+					'doubles': [totalCapacity, quantityAvailable, availableUnits, totallySoldOut, price_usd],
 					'indexes': [sampling_index]
 				});
 			}

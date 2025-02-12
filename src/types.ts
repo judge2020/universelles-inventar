@@ -14,7 +14,7 @@ export type uorApiResponseOidcConnectToken = {
 export type uorApiRequestDataEvent = {
 	endDate: string
 	partNumber: string
-	quantity: string|null
+	quantity: string | null
 	startDate: string
 }
 
@@ -26,7 +26,7 @@ export type uorApiRequestDataInventoryEvent = {
 	showTime: string
 	available: string
 	showEventKey: string
-	tableIds: string[]|null,
+	tableIds: string[] | null,
 	showDate: string,
 	totalCapacity: string,
 	eventName: string,
@@ -46,7 +46,15 @@ export type uorApiResponseShopPriceAndInventoryV2 = {
 	messages: string[],
 	eventAvailability: {
 		[key: string]: {
-			inventoryEvents: uorApiRequestDataInventoryEvent[]
+			[key: string]: {
+				inventoryEvents: uorApiRequestDataInventoryEvent[],
+				paymentPlans: any[],
+				pricing: {
+					amount: number,
+					quantity: number,
+					currency: string,
+				}[],
+			}
 		}
 	}
 }

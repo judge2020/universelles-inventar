@@ -1,9 +1,10 @@
 import Cache from "../Cache";
 import UniversalOrlandoApi from "./UniversalOrlandoApi";
-import {analyticsTables, uorApiResponseShopPriceAndInventoryV2, uorDateBoundary} from "../types";
+import {analyticsTables, uorDateBoundary} from "../types";
 import {UorApiExtractor} from "./UorApiExtractor";
 import {emitErrorDp} from "../helpers";
 import {Env} from "../worker-configuration";
+import {uorApiResponseShopPriceAndInventoryV2} from "./uorApiTypes";
 
 export class TicketsHandler {
 	async handleUniversalEpic(env: Env, dates: uorDateBoundary) {

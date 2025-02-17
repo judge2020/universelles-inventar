@@ -1,6 +1,6 @@
-import {uorApiRequestDataInventoryEvent, uorApiResponseShopPriceAndInventoryV2} from "../types";
 import {emitErrorDp} from "../helpers";
 import {Env} from "../worker-configuration";
+import {uorApiRequestDataInventoryEvent, uorApiResponseShopPriceAndInventoryV2} from "./uorApiTypes";
 
 export class UorApiExtractor {
 	extractInventoryEvents(my_json: uorApiResponseShopPriceAndInventoryV2, env: Env): AnalyticsEngineDataPoint[] {

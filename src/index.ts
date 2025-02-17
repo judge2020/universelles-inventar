@@ -37,6 +37,26 @@ const monitored_yt_videos: monitoredYtVideo[] = [
 		id: "j47EL-zGLDg",
 		friendly: "UOR-EU 15sec SNW",
 		category: "UOR-EU"
+	},
+	{
+		id: "Q0SE1kdn7q4",
+		friendly: "UOR-EU 15sec DU",
+		category: "UOR-EU"
+	},
+	{
+		id: "KTWtG1YgvmQ",
+		friendly: "UOR-General EventSpace",
+		category: "UOR-GENERAL"
+	},
+	{
+		id: "JwuW4IkhQv8",
+		friendly: "USH 15sec Save40Online",
+		category: "USH"
+	},
+	{
+		id: "https://youtu.be/Izm7q14C5aA",
+		friendly: "VORL 30sec SpringEvents",
+		category: "VORL"
 	}
 ]
 

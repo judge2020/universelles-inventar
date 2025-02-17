@@ -1,7 +1,18 @@
+export enum analyticsTables {
+	tickets,
+	videos,
+	errors
+}
+
+export type queueDatapointMessage = {
+	name: analyticsTables
+	dp: AnalyticsEngineDataPoint
+}
+
 export type uorDateBoundary = {
-	start_date: string;
-	end_date: string;
-	partNumber: string;
+	start_date: string
+	end_date: string
+	partNumber: string
 }
 
 export type uorApiResponseOidcConnectToken = {
@@ -26,14 +37,14 @@ export type uorApiRequestDataInventoryEvent = {
 	showTime: string
 	available: string
 	showEventKey: string
-	tableIds: string[] | null,
-	showDate: string,
-	totalCapacity: string,
-	eventName: string,
-	showType: string,
-	partNumber: string,
-	startDate: string,
-	ada: string,
+	tableIds: string[] | null
+	showDate: string
+	totalCapacity: string
+	eventName: string
+	showType: string
+	partNumber: string
+	startDate: string
+	ada: string
 }
 
 export type uorApiRequestShopPriceAndInventoryV2 = {
@@ -48,11 +59,11 @@ export type uorApiResponseShopPriceAndInventoryV2 = {
 		[key: string]: {
 			[key: string]: {
 				inventoryEvents: uorApiRequestDataInventoryEvent[],
-				paymentPlans: any[],
+				paymentPlans: any[]
 				pricing: {
-					amount: number,
-					quantity: number,
-					currency: string,
+					amount: number
+					quantity: number
+					currency: string
 				}[],
 			}
 		}

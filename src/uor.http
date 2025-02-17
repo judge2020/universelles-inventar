@@ -1,0 +1,154 @@
+###
+
+# curl 'https://api.universalparks.com/oidc/connect/token'
+#  -H 'accept: application/json'
+#  -H 'accept-language: en-US,en;q=0.9'
+#  -H 'authorization: Basic ZTdjOTQ1YmEtZWVlYy00Mzg0LWIwM2QtNjAxNjUwNjc3OTg3Okw2c0o1aEM1YVAyaUQwZ1g3eUkxZFYwbFM3cFgwaE4xaks4bUs4cEs3bFYydUUzaEQ4'
+#  -H 'cache-control: no-cache'
+#  -H 'content-type: application/x-www-form-urlencoded'
+#  -H 'origin: https://www.universalorlando.com'
+#  -H 'pragma: no-cache'
+#  -H 'priority: u=1, i'
+#  -H 'referer: https://www.universalorlando.com/'
+#  -H 'sec-ch-ua: "Not A(Brand";v="8", "Chromium";v="132", "Google Chrome";v="132"'
+#  -H 'sec-ch-ua-mobile: ?0'
+#  -H 'sec-ch-ua-platform: "Windows"'
+#  -H 'sec-fetch-dest: empty'
+#  -H 'sec-fetch-mode: cors'
+#  -H 'sec-fetch-site: cross-site'
+#  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36'
+#  --data-raw 'grant_type=client_credentials&scope=default'
+POST https://api.universalparks.com/oidc/connect/token
+accept: application/json
+accept-language: en-US,en;q=0.9
+authorization: Basic ZTdjOTQ1YmEtZWVlYy00Mzg0LWIwM2QtNjAxNjUwNjc3OTg3Okw2c0o1aEM1YVAyaUQwZ1g3eUkxZFYwbFM3cFgwaE4xaks4bUs4cEs3bFYydUUzaEQ4
+cache-control: no-cache
+origin: https://www.universalorlando.com
+pragma: no-cache
+priority: u=1, i
+referer: https://www.universalorlando.com/
+sec-ch-ua: "Not A(Brand";v="8", "Chromium";v="132", "Google Chrome";v="132"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+sec-fetch-dest: empty
+sec-fetch-mode: cors
+sec-fetch-site: cross-site
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36
+Content-Type: application/x-www-form-urlencoded
+
+grant_type = client_credentials &
+scope = default
+
+###
+
+POST https://api.universalparks.com/shop/wcs/resources/store/10101/event/priceAndInventory/v2
+accept: application/json
+accept-language: en-US,en;q=0.9
+authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjA4MzA2MjYzNTJGQTM3OTEzOTBFNzlDNDAxRDM3QTAyQzBDMERCMThSUzI1NiIsIng1dCI6IkNEQmlZMUw2TjVFNURubkVBZE42QXNEQTJ4ZyIsInR5cCI6ImF0K2p3dCJ9.eyJpc3MiOiJwcm9kLWlzc3Vlci51Y2RwLm5ldCIsIm5iZiI6MTczOTQxOTc0OCwiaWF0IjoxNzM5NDE5NzQ4LCJleHAiOjE3Mzk0MjMzNDgsInNjb3BlIjpbImRlZmF1bHQiXSwiY2xpZW50X2lkIjoiZTdjOTQ1YmEtZWVlYy00Mzg0LWIwM2QtNjAxNjUwNjc3OTg3IiwiYXBwIjpbIndlYiIsInVuaXZlcnNhbERlZmF1bHQiXSwiY2xpZW50X2FsbG93ZWRfc2NvcGVzIjoiZGVmYXVsdCBvcGVuaWQgb2ZmbGluZV9hY2Nlc3MiLCJqdGkiOiIyOTJEREU5NTZFNUNFQTJGRDZFQzJBNEY0MTdDRkE1QyJ9.Z28FxjVlMYQNuzWK8cRuXxqMpDTwMSaRJGxUrvo_xJ0aGVHLuLWGeeP-xzsYbvPulIokP5adG2-BLcZQGDTBsm-OfqNPHyjw5Q-jUfm1G_YTYYPpWG7jZFB_ZmLNPSrPd5vko_ejVTMBEweXnUSl5Xb5UZssRqIwTWIsuJKbGnHeQHsbKWV7EPwk_Nn2acleBe1c-pKv6bN1MXUIUKE6V42BdN3qXt3NIHqGKh3YSNSuVIm38ELmHm2C8bvKeNM0hJXtXDunfLqmVRH18pcriZzs0nfiU7ME34xDf8HfYcyaKTR1x8S6NSLDQ3KFhJSjoCsYQGPm_InGXxBY1mp5QA
+cache-control: no-cache
+origin: https://www.universalorlando.com
+pragma: no-cache
+priority: u=1, i
+referer: https://www.universalorlando.com/
+sec-ch-ua: "Not A(Brand";v="8", "Chromium";v="132", "Google Chrome";v="132"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+sec-fetch-dest: empty
+sec-fetch-mode: cors
+sec-fetch-site: cross-site
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36
+Content-Type: application/json
+
+{
+  "contractId": "4000000000000000003",
+  "currency": "USD",
+  "events": [
+  {
+    "startDate": "2025-02-21 00:00:01",
+    "endDate": "2025-05-21 23:59:59",
+    "partNumber": "TPA-01D_BSE_1DEPIC_AD_ABP",
+    "quantity": "1"
+  }
+  ]
+}
+
+
+###
+
+# curl 'https://api.universalparks.com/cp/personalization/gettickets'
+#  -H 'accept: application/json, text/plain, */*'
+#  -H 'accept-language: en-US,en;q=0.9'
+#  -H 'authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjA4MzA2MjYzNTJGQTM3OTEzOTBFNzlDNDAxRDM3QTAyQzBDMERCMThSUzI1NiIsIng1dCI6IkNEQmlZMUw2TjVFNURubkVBZE42QXNEQTJ4ZyIsInR5cCI6ImF0K2p3dCJ9.eyJpc3MiOiJwcm9kLWlzc3Vlci51Y2RwLm5ldCIsIm5iZiI6MTczOTQxOTczMiwiaWF0IjoxNzM5NDE5NzMyLCJleHAiOjE3Mzk0MjMzMzIsInNjb3BlIjpbImRlZmF1bHQiXSwiY2xpZW50X2lkIjoiZTdjOTQ1YmEtZWVlYy00Mzg0LWIwM2QtNjAxNjUwNjc3OTg3IiwiYXBwIjpbIndlYiIsInVuaXZlcnNhbERlZmF1bHQiXSwiY2xpZW50X2FsbG93ZWRfc2NvcGVzIjoiZGVmYXVsdCBvcGVuaWQgb2ZmbGluZV9hY2Nlc3MiLCJqdGkiOiI4RTI3ODc1NUUzMDBFRUZCQzRFMzM4Q0I1QUM1N0FEQSJ9.KvswIEkIMvUX2OJ3yauNfkUr0QciGH2-lQYvOg2HebJKyJ5xtiD4Q02vjUDsGMtcGXve1QOaj2QnGZP4B6K62qsA3c09MSIY6WcUV4uHECjLionu-b62UTvlgxo0D-JWlQFQGpGeZ_OJoEmeus3wy5Lmwn-Ic8nitSZ3kDw8afsZls-hcIOFlm8liA6KILkiJ_F84rSMw6-Xb4lL_W09liDy34h7vcWcRZL4xw6KYBmk-TS2wYFgmRXs-NfHCy4ZZMjT2g5eqOghZLeBwac72g9rKPIvhfoEiHXVgg8qCRv1El8G6ih4uDHcKbrmIIhKU1h1nxzv9F87UMRBQ_EetQ'
+#  -H 'cache-control: no-cache'
+#  -H 'content-type: application/json'
+#  -H 'origin: https://www.universalorlando.com'
+#  -H 'pragma: no-cache'
+#  -H 'priority: u=1, i'
+#  -H 'referer: https://www.universalorlando.com/'
+#  -H 'sec-ch-ua: "Not A(Brand";v="8", "Chromium";v="132", "Google Chrome";v="132"'
+#  -H 'sec-ch-ua-mobile: ?0'
+#  -H 'sec-ch-ua-platform: "Windows"'
+#  -H 'sec-fetch-dest: empty'
+#  -H 'sec-fetch-mode: cors'
+#  -H 'sec-fetch-site: cross-site'
+#  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36'
+#  -H 'wctoken: 198566935%2Cv7nDjrNlBBisPNG3hcXvDMF6bJeBIjDdXp7PfOFTB9OrGQb65uDuHDUvjdcaDuYx3bpteRGrVClyG026ym%2Fj0J%2BRSBmcDrR%2B8WaA5AGb04C1kP81HTRmTW5zCYqvOgFDrQX2P50BiUwVagt0yUV9JW3Ps%2B28tRcKV7SjctlTCWsf9UQ5cKw47Fgm7YYfNIbD30hvpCBQ%2BFLmcscS9WmSWTqxdjADXOh45g7gLzj97lm7okhVSQKAyWrnVaLE0NNa'
+#  -H 'wctrustedtoken: 198566935%2CU4DwPPLSjbgyqsube%2Bde5%2B%2FQXJmacUb9MEKmvomnRGk%3D'
+#  -H 'x-ibm-client-id: e7c945ba-eeec-4384-b03d-601650677987'
+#  -H 'x-uniwebservice-apikey: webstore'
+#  -H 'x-uniwebservice-appversion: upr-web-store.1.0'
+#  -H 'x-uniwebservice-device: Chrome'
+#  -H 'x-uniwebservice-platform: Web'
+#  --data-raw '{"externalGuestId":"27da2d19-b559-4d2c-8988-1baa43edf836","sessionId":"27da2d19-b559-4d2c-8988-1baa43edf836","cards":"Limited_Offer_Tickets_MDVP_SC_Web~POO.Outer%20US","catalogId":"20004","ip":"","ic":"UO website","firstTimeVisitor":"Y","geoLocation":"OUS","ticketsPageNumberOfDays":"3","ticketsPageNumberOfAdults":"0","ticketsPageNumberOfChildren":"0","ticketsPageFloridaResidentFlag":"N","persona":"","attractionExperience":"","attractionInterest":"","attractionLocation":"","mapLocation":"","pageBrowsed":"","skipInventory":true,"ticketsPageSelectedTicketDate":"","dates":[],"seasons":"","personalizationSpot":""}'
+POST https://api.universalparks.com/cp/personalization/gettickets
+accept: application/json, text/plain, */*
+accept-language: en-US,en;q=0.9
+authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjA4MzA2MjYzNTJGQTM3OTEzOTBFNzlDNDAxRDM3QTAyQzBDMERCMThSUzI1NiIsIng1dCI6IkNEQmlZMUw2TjVFNURubkVBZE42QXNEQTJ4ZyIsInR5cCI6ImF0K2p3dCJ9.eyJpc3MiOiJwcm9kLWlzc3Vlci51Y2RwLm5ldCIsIm5iZiI6MTczOTQxOTczMiwiaWF0IjoxNzM5NDE5NzMyLCJleHAiOjE3Mzk0MjMzMzIsInNjb3BlIjpbImRlZmF1bHQiXSwiY2xpZW50X2lkIjoiZTdjOTQ1YmEtZWVlYy00Mzg0LWIwM2QtNjAxNjUwNjc3OTg3IiwiYXBwIjpbIndlYiIsInVuaXZlcnNhbERlZmF1bHQiXSwiY2xpZW50X2FsbG93ZWRfc2NvcGVzIjoiZGVmYXVsdCBvcGVuaWQgb2ZmbGluZV9hY2Nlc3MiLCJqdGkiOiI4RTI3ODc1NUUzMDBFRUZCQzRFMzM4Q0I1QUM1N0FEQSJ9.KvswIEkIMvUX2OJ3yauNfkUr0QciGH2-lQYvOg2HebJKyJ5xtiD4Q02vjUDsGMtcGXve1QOaj2QnGZP4B6K62qsA3c09MSIY6WcUV4uHECjLionu-b62UTvlgxo0D-JWlQFQGpGeZ_OJoEmeus3wy5Lmwn-Ic8nitSZ3kDw8afsZls-hcIOFlm8liA6KILkiJ_F84rSMw6-Xb4lL_W09liDy34h7vcWcRZL4xw6KYBmk-TS2wYFgmRXs-NfHCy4ZZMjT2g5eqOghZLeBwac72g9rKPIvhfoEiHXVgg8qCRv1El8G6ih4uDHcKbrmIIhKU1h1nxzv9F87UMRBQ_EetQ
+cache-control: no-cache
+origin: https://www.universalorlando.com
+pragma: no-cache
+priority: u=1, i
+referer: https://www.universalorlando.com/
+sec-ch-ua: "Not A(Brand";v="8", "Chromium";v="132", "Google Chrome";v="132"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+sec-fetch-dest: empty
+sec-fetch-mode: cors
+sec-fetch-site: cross-site
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36
+wctoken: 198566935%2Cv7nDjrNlBBisPNG3hcXvDMF6bJeBIjDdXp7PfOFTB9OrGQb65uDuHDUvjdcaDuYx3bpteRGrVClyG026ym%2Fj0J%2BRSBmcDrR%2B8WaA5AGb04C1kP81HTRmTW5zCYqvOgFDrQX2P50BiUwVagt0yUV9JW3Ps%2B28tRcKV7SjctlTCWsf9UQ5cKw47Fgm7YYfNIbD30hvpCBQ%2BFLmcscS9WmSWTqxdjADXOh45g7gLzj97lm7okhVSQKAyWrnVaLE0NNa
+wctrustedtoken: 198566935%2CU4DwPPLSjbgyqsube%2Bde5%2B%2FQXJmacUb9MEKmvomnRGk%3D
+x-ibm-client-id: e7c945ba-eeec-4384-b03d-601650677987
+x-uniwebservice-apikey: webstore
+x-uniwebservice-appversion: upr-web-store.1.0
+x-uniwebservice-device: Chrome
+x-uniwebservice-platform: Web
+Content-Type: application/json
+
+{
+  "externalGuestId": "27da2d19-b559-4d2c-8988-1baa43edf836",
+  "sessionId": "27da2d19-b559-4d2c-8988-1baa43edf836",
+  "cards": "Limited_Offer_Tickets_MDVP_SC_Web~POO.Outer%20US",
+  "catalogId": "20004",
+  "ip": "",
+  "ic": "UO website",
+  "firstTimeVisitor": "Y",
+  "geoLocation": "OUS",
+  "ticketsPageNumberOfDays": "1",
+  "ticketsPageNumberOfAdults": "0",
+  "ticketsPageNumberOfChildren": "0",
+  "ticketsPageFloridaResidentFlag": "Y",
+  "persona": "",
+  "attractionExperience": "",
+  "attractionInterest": "",
+  "attractionLocation": "",
+  "mapLocation": "",
+  "pageBrowsed": "",
+  "skipInventory": true,
+  "ticketsPageSelectedTicketDate": "",
+  "dates": [],
+  "seasons": "",
+  "personalizationSpot": ""
+}
+###
+

@@ -11,12 +11,13 @@
  * Learn more at https://developers.cloudflare.com/workers/
  */
 
-import {Handler} from "./handler";
+import {TicketsHandler} from "./tickets/TicketsHandler";
 import {ExecutionContext, MessageBatch} from "@cloudflare/workers-types/2023-07-01/index";
-import {Env} from "../worker-configuration";
-import {uor_3_park_3_day_one_day_epic_base_ad, uor_uoap_epic_addon_ad} from "./data";
+import {uor_3_park_3_day_one_day_epic_base_ad, uor_uoap_epic_addon_ad} from "./tickets/data";
+import {analyticsTables, queueDatapointMessage} from "./types";
+import {Env} from "./worker-configuration";
 
-let handler = new Handler;
+let handler = new TicketsHandler;
 
 export default {
 	async fetch(request: Request, env: Env, ctx: any): Promise<Response> {
@@ -49,13 +50,24 @@ export default {
 		});
 	},
 	async queue(
-		batch: MessageBatch,
+		batch: MessageBatch<queueDatapointMessage>,
 		env: Env,
 		ctx: ExecutionContext
 	) {
 		for (let {body} of batch.messages) {
-			// @ts-ignore
-			env.tickets.writeDataPoint(body);
+			switch (body.name) {
+				case analyticsTables.tickets:
+					env.tickets.writeDataPoint(body.dp);
+					break;
+				case analyticsTables.videos:
+					env.videos.writeDataPoint(body.dp);
+					break;
+				case analyticsTables.errors:
+					env.errors.writeDataPoint(body.dp);
+					break;
+				default:
+					console.log("Bad table name!", body.name);
+			}
 		}
 	}
-} satisfies ExportedHandler<Env>;
+} satisfies ExportedHandler<Env, queueDatapointMessage>;

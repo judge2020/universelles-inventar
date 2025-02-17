@@ -1,12 +1,11 @@
-import Cache from "./Cache";
+import Cache from "../Cache";
 import UniversalOrlandoApi from "./UniversalOrlandoApi";
-import {uor_3_park_3_day_one_day_epic_base_ad} from "./data";
-import {uorApiResponseShopPriceAndInventoryV2, uorDateBoundary} from "./types";
-import {Extractor} from "./extractor";
+import {analyticsTables, uorApiResponseShopPriceAndInventoryV2, uorDateBoundary} from "../types";
+import {UorApiExtractor} from "./UorApiExtractor";
+import {emitErrorDp} from "../helpers";
 import {Env} from "../worker-configuration";
-import {emitErrorDp} from "./helpers";
 
-export class Handler {
+export class TicketsHandler {
 	async handleUniversalEpic(env: Env, dates: uorDateBoundary) {
 		console.log("dates", dates)
 		let cache = new Cache(env.cache);
@@ -38,10 +37,10 @@ export class Handler {
 			return new Response(error);
 		}
 		let myjson: uorApiResponseShopPriceAndInventoryV2 = await res.json();
-		let extractor = new Extractor;
+		let extractor = new UorApiExtractor;
 		let events = extractor.extractInventoryEvents(myjson, env);
 		for (let event of events) {
-			await env.uor_queue.send(event);
+			await env.uor_queue.send({dp: event, name: analyticsTables.tickets});
 		}
 	}
 

@@ -1,5 +1,5 @@
-import {uorApiRequestDataEvent, uorApiRequestShopPriceAndInventoryV2, uorApiResponseOidcConnectToken} from "./types";
-import Cache from "./Cache";
+import {uorApiRequestDataEvent, uorApiRequestShopPriceAndInventoryV2, uorApiResponseOidcConnectToken} from "../types";
+import Cache from "../Cache";
 
 const CLIENT_ID = "e7c945ba-eeec-4384-b03d-601650677987";
 const CLIENT_SECRET = "L6sJ5hC5aP2iD0gX7yI1dV0lS7pX0hN1jK8mK8pK7lV2uE3hD8";

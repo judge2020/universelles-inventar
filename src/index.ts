@@ -67,6 +67,7 @@ export default {
 					break;
 				default:
 					console.log("Bad table name!", body.name);
+					throw new Error("Bad table name");
 			}
 		}
 	}

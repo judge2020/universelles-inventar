@@ -54,7 +54,7 @@
 		"producers": [
 			{
 				"queue": "uor-queue",
-				"binding": "uor_queue"
+				"binding": "analytics_queue"
 			}
 		],
 		"consumers": [

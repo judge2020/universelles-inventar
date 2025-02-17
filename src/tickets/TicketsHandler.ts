@@ -40,7 +40,7 @@ export class TicketsHandler {
 		let extractor = new UorApiExtractor;
 		let events = extractor.extractInventoryEvents(myjson, env);
 		for (let event of events) {
-			await env.uor_queue.send({dp: event, name: analyticsTables.tickets});
+			await env.analytics_queue.send({dp: event, name: analyticsTables.tickets});
 		}
 	}
 

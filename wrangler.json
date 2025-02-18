@@ -62,9 +62,9 @@
 			{
 				"queue": "uor-queue",
 				"max_batch_size": 20,
-				"max_batch_timeout": 4,
+				"max_batch_timeout": 3,
 				"max_retries": 0,
-				"max_concurrency": 2
+				"max_concurrency": 3
 			}
 		]
 	}

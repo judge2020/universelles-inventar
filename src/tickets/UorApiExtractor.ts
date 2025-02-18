@@ -10,12 +10,7 @@ export class UorApiExtractor {
 			console.log("Extracting from product...");
 			for (const date in my_json.eventAvailability[product]) {
 				datesLogged++;
-				if (!date.includes("2025") || date.includes("2025-04")) {
-					// @ts-ignore
-					emitErrorDp(env, "extract:baddate", 999, JSON.stringify(my_json.eventAvailability[product][date]));
-					console.log("what");
-					continue;
-				}
+
 				let eventData = my_json.eventAvailability[product][date];
 
 				let totalCapacity = 0;

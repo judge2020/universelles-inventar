@@ -69,6 +69,14 @@ export default {
 			}
 			return new Response("");
 		}
+		if (url.pathname == "/vb") {
+			await handler.handleUniversalEpic(env, {
+				start_date: "2025-04-01 00:00:01",
+				end_date: "2025-05-18 23:59:59",
+				partNumber: uor_vb_nights,
+			});
+			return new Response("yay");
+		}
 		if (url.pathname == "/yay") {
 			await handler.handleUniversalEpic(env, {
 				start_date: "2025-05-20 00:00:01",

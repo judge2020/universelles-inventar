@@ -13,7 +13,7 @@
 
 import {TicketsHandler} from "./tickets/TicketsHandler";
 import {ExecutionContext, MessageBatch} from "@cloudflare/workers-types/2023-07-01/index";
-import {uor_3_park_3_day_one_day_epic_base_ad, uor_uoap_epic_addon_ad} from "./tickets/data";
+import {uor_3_park_3_day_one_day_epic_base_ad, uor_uoap_epic_addon_ad, uor_vb_nights} from "./tickets/data";
 import {analyticsTables, monitoredYtVideo, queueDatapointMessage} from "./types";
 import {Env} from "./worker-configuration";
 import {YoutubeHandler} from "./youtube/YoutubeHandler";
@@ -97,6 +97,11 @@ export default {
 					start_date: "2025-05-20 00:00:01",
 					end_date: "2025-12-31 23:59:59",
 					partNumber: uor_uoap_epic_addon_ad,
+				});
+				await handler.handleUniversalEpic(env, {
+					start_date: "2025-04-01 00:00:01",
+					end_date: "2025-05-18 23:59:59",
+					partNumber: uor_vb_nights,
 				});
 				break;
 			case "21 * * * *":
